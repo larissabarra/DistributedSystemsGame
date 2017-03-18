@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                     .addApi(LocationServices.API)
                     .build();
         }
+
         setContentView(R.layout.activity_main);
     }
 
@@ -38,7 +40,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public void onConnected(Bundle connectionHint) {
-        Toast.makeText(this, "on connected", Toast.LENGTH_SHORT).show();
+        getLocation(null);
+    }
+
+    public void getLocation (View view) {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -50,11 +55,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             Toast.makeText(this, "Permissões de localização não concedidas", Toast.LENGTH_LONG).show();
             return;
         }
-        Toast.makeText(this, "passou", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Atualizando localização...", Toast.LENGTH_SHORT).show();
         Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
         if (mLastLocation != null) {
             TextView coordinatesText = (TextView) findViewById(R.id.coordinatesText);
-            coordinatesText.setText(String.valueOf(mLastLocation.getLatitude()) + String.valueOf(mLastLocation.getLongitude()));
+            coordinatesText.setText(String.valueOf(mLastLocation.getLatitude()) + ", " + String.valueOf(mLastLocation.getLongitude()));
         }
     }
 

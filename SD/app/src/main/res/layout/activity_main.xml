@@ -9,46 +9,39 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cefetmg.br.sd.MainActivity"
     android:clickable="false"
-    android:background="#4cafdc">
+    android:background="#a7aaed">
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:text="Última localização conhecida:"
+        android:textSize="16dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
-        android:text="Última localização conhecida:"
-        android:textSize="16dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/friendlyAddressText"
-        android:layout_marginTop="25dp"
-        android:textSize="20dp"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="100dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Recalcular"
-        android:id="@+id/button"
-        android:layout_marginTop="100dp"
+        android:id="@+id/refreshButton"
+        android:onClick="getLocation"
         android:textSize="16dp"
-        android:layout_below="@+id/friendlyAddressText"
-        android:layout_centerHorizontal="true"
         android:background="#ffffff"
         android:padding="5dp"
         android:singleLine="true"
-        android:theme="@style/Base.Widget.AppCompat.ActionButton" />
+        android:theme="@style/Base.Widget.AppCompat.ActionButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="125dp" />
 
     <TextView
         android:id="@+id/coordinatesText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/friendlyAddressText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp" />
+        android:layout_marginTop="25dp"
+        android:textSize="20dp"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
