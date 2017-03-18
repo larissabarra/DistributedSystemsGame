@@ -12,19 +12,19 @@
     android:background="#4cafdc">
 
     <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Última localização conhecida"
-        android:layout_marginTop="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:textSize="16dp"
-        android:id="@+id/textView2" />
+        android:layout_marginTop="200dp"
+        android:text="Última localização conhecida:"
+        android:textSize="16dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/textView"
+        android:id="@+id/friendlyAddressText"
         android:layout_marginTop="25dp"
         android:textSize="20dp"
         android:layout_below="@+id/textView2"
@@ -37,10 +37,18 @@
         android:id="@+id/button"
         android:layout_marginTop="100dp"
         android:textSize="16dp"
-        android:layout_below="@+id/textView"
+        android:layout_below="@+id/friendlyAddressText"
         android:layout_centerHorizontal="true"
         android:background="#ffffff"
         android:padding="5dp"
         android:singleLine="true"
         android:theme="@style/Base.Widget.AppCompat.ActionButton" />
+
+    <TextView
+        android:id="@+id/coordinatesText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/friendlyAddressText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
 </RelativeLayout>
