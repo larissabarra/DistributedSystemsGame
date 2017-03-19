@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="Recalcular"
         android:id="@+id/refreshButton"
-        android:onClick="getLocation"
+        android:onClick="onClickRefreshLocation"
         android:textSize="16dp"
         android:background="#ffffff"
         android:padding="5dp"
