@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -17,18 +18,30 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationServices;
 
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     public static final int REQUEST_COARSE_PERMISSION = 1;
     public static final int REQUEST_FINE_PERMISSION = 2;
+    public static final String MQTT_BROKE_ADDRESS = "tcp://10.3.152.12:1883";
+    public static final String MQTT_CLIENT_TOPIC = "coordenadas";
+    public static final String MQTT_CLIENT_NAME = "AndroidClient";
+    public static final int MQTT_CLIENT_QOS = 2;
 
     GoogleApiClient mGoogleApiClient = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
         checkPermissions();
+
     }
 
     @Override
@@ -56,8 +69,10 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             Toast.makeText(this, "Atualizando localização...", Toast.LENGTH_SHORT).show();
             Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
             if (mLastLocation != null) {
+                String currentPosition = String.valueOf(mLastLocation.getLatitude()) + ", " + String.valueOf(mLastLocation.getLongitude());
                 TextView coordinatesText = (TextView) findViewById(R.id.coordinatesText);
-                coordinatesText.setText(String.valueOf(mLastLocation.getLatitude()) + ", " + String.valueOf(mLastLocation.getLongitude()));
+                coordinatesText.setText(currentPosition);
+                sendMqttMessage(currentPosition);
             }
         }
     }
@@ -80,6 +95,25 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     @Override
     public void onConnectionSuspended(int i) {
         Toast.makeText(this, "Conexão suspensa", Toast.LENGTH_LONG).show();
+    }
+
+    private void sendMqttMessage(String message) {
+        try {
+            MemoryPersistence mMqttPersistence = new MemoryPersistence();
+            MqttClient mqttClient = new MqttClient(MQTT_BROKE_ADDRESS, MQTT_CLIENT_NAME, mMqttPersistence);
+            MqttConnectOptions mqttConnectOptions = new MqttConnectOptions();
+            mqttConnectOptions.setCleanSession(true);
+            mqttClient.connect(mqttConnectOptions);
+            Log.d("SD", "MQTT Conectado");
+            MqttMessage mqttMessage = new MqttMessage(message.getBytes());
+            mqttMessage.setQos(MQTT_CLIENT_QOS);
+            mqttClient.publish(MQTT_CLIENT_TOPIC, mqttMessage);
+            mqttClient.disconnect();
+            Log.d("SD", "MQTT Desconectado");
+        } catch (MqttException e) {
+            Log.e("SD", "Falha de MQTT: " + e.getMessage());
+            Toast.makeText(this, "Falha de MQTT: " + e.getMessage(), Toast.LENGTH_LONG).show();
+        }
     }
 
     private void checkPermissions() {
