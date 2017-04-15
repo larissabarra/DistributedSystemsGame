@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/Matthaus/.android/build-cache/ae1c42e70fa70c098f96439cceab44892f5d844c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/build/intermediates/pre-dexed/debug/classes_f0ee18cd3b885a3bfc840b7fdf2716de63c39217.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Matthaus/.android/build-cache/b8871089df01801c0c652829d3d07dd8f277f567/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/build/intermediates/pre-dexed/debug/classes_18dbd06613b7add1d595753ec5c183fce0fce2e9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Matthaus/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_bb32a7c90334cc5760a679f435672923240c7687.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/Matthaus/.android/build-cache/ae1c42e70fa70c098f96439cceab44892f5d844c/output/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_2260e67ec8da852ff1a4890cb4e5061cbb1485e9.jar" />
+    </item>
+
+</items>

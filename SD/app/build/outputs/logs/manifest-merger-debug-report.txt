@@ -1,0 +1,101 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:2:1-26:12
+	package
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:3:5-28
+		INJECTED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:5:5-80
+	android:name
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:5:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:6:5-78
+	android:name
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:6:22-76
+uses-sdk
+ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:8:5-10:41
+MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/Matthaus/.android/build-cache/b8871089df01801c0c652829d3d07dd8f277f567/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-v4:23.0.1] /Users/Matthaus/.android/build-cache/ae1c42e70fa70c098f96439cceab44892f5d844c/output/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /Users/Matthaus/.android/build-cache/65cce75a347371d0edd5a28bd05378b2df371e88/output/AndroidManifest.xml:23:5-43
+MERGED from [com.google.android.gms:play-services-location:10.2.1] /Users/Matthaus/.android/build-cache/0b8e127390ad9e3606ce174e98314b117c4ea31e/output/AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-base:10.2.1] /Users/Matthaus/.android/build-cache/cda8ebdfdfbdd4d0c849e994953ae8ffbfb04c31/output/AndroidManifest.xml:17:5-43
+MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /Users/Matthaus/.android/build-cache/6c753667f6366a2f186c67c3299ea808d8029001/output/AndroidManifest.xml:3:5-43
+MERGED from [com.google.android.gms:play-services-basement:10.2.1] /Users/Matthaus/.android/build-cache/1ae010519457b543a8246c878fa693ebad0f30b5/output/AndroidManifest.xml:17:5-43
+	android:targetSdkVersion
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:10:9-38
+		INJECTED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:9:9-35
+		INJECTED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml
+application
+ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:12:5-25:19
+MERGED from [com.android.support:appcompat-v7:23.0.1] /Users/Matthaus/.android/build-cache/b8871089df01801c0c652829d3d07dd8f277f567/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-v4:23.0.1] /Users/Matthaus/.android/build-cache/ae1c42e70fa70c098f96439cceab44892f5d844c/output/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-maps:10.2.1] /Users/Matthaus/.android/build-cache/65cce75a347371d0edd5a28bd05378b2df371e88/output/AndroidManifest.xml:24:5-19
+MERGED from [com.google.android.gms:play-services-location:10.2.1] /Users/Matthaus/.android/build-cache/0b8e127390ad9e3606ce174e98314b117c4ea31e/output/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-base:10.2.1] /Users/Matthaus/.android/build-cache/cda8ebdfdfbdd4d0c849e994953ae8ffbfb04c31/output/AndroidManifest.xml:18:5-20:19
+MERGED from [com.google.android.gms:play-services-tasks:10.2.1] /Users/Matthaus/.android/build-cache/6c753667f6366a2f186c67c3299ea808d8029001/output/AndroidManifest.xml:4:5-19
+MERGED from [com.google.android.gms:play-services-basement:10.2.1] /Users/Matthaus/.android/build-cache/1ae010519457b543a8246c878fa693ebad0f30b5/output/AndroidManifest.xml:19:5-21:19
+	android:label
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:15:9-41
+	android:supportsRtl
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:16:9-35
+	android:allowBackup
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:13:9-35
+	android:icon
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:14:9-43
+	android:theme
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:17:9-40
+activity#cefetmg.br.sd.MainActivity
+ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:18:9-24:20
+	android:name
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:18:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:19:13-23:29
+action#android.intent.action.MAIN
+ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:20:17-69
+	android:name
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:20:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:22:17-77
+	android:name
+		ADDED from /Users/Matthaus/Desktop/Projetos MAC/Active Projects/Natalia/DistributedSystemsGame/SD/app/src/main/AndroidManifest.xml:22:27-74
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from [com.google.android.gms:play-services-maps:10.2.1] /Users/Matthaus/.android/build-cache/65cce75a347371d0edd5a28bd05378b2df371e88/output/AndroidManifest.xml:19:5-78
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:10.2.1] /Users/Matthaus/.android/build-cache/65cce75a347371d0edd5a28bd05378b2df371e88/output/AndroidManifest.xml:19:22-76
+uses-permission#android.permission.INTERNET
+ADDED from [com.google.android.gms:play-services-maps:10.2.1] /Users/Matthaus/.android/build-cache/65cce75a347371d0edd5a28bd05378b2df371e88/output/AndroidManifest.xml:20:5-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-maps:10.2.1] /Users/Matthaus/.android/build-cache/65cce75a347371d0edd5a28bd05378b2df371e88/output/AndroidManifest.xml:20:22-64
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:10.2.1] /Users/Matthaus/.android/build-cache/65cce75a347371d0edd5a28bd05378b2df371e88/output/AndroidManifest.xml:21:5-77
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:10.2.1] /Users/Matthaus/.android/build-cache/65cce75a347371d0edd5a28bd05378b2df371e88/output/AndroidManifest.xml:21:19-51
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:10.2.1] /Users/Matthaus/.android/build-cache/65cce75a347371d0edd5a28bd05378b2df371e88/output/AndroidManifest.xml:21:52-75
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:10.2.1] /Users/Matthaus/.android/build-cache/cda8ebdfdfbdd4d0c849e994953ae8ffbfb04c31/output/AndroidManifest.xml:19:9-172
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:10.2.1] /Users/Matthaus/.android/build-cache/cda8ebdfdfbdd4d0c849e994953ae8ffbfb04c31/output/AndroidManifest.xml:19:146-170
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:10.2.1] /Users/Matthaus/.android/build-cache/cda8ebdfdfbdd4d0c849e994953ae8ffbfb04c31/output/AndroidManifest.xml:19:86-145
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:10.2.1] /Users/Matthaus/.android/build-cache/cda8ebdfdfbdd4d0c849e994953ae8ffbfb04c31/output/AndroidManifest.xml:19:19-85
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:10.2.1] /Users/Matthaus/.android/build-cache/1ae010519457b543a8246c878fa693ebad0f30b5/output/AndroidManifest.xml:20:9-121
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:10.2.1] /Users/Matthaus/.android/build-cache/1ae010519457b543a8246c878fa693ebad0f30b5/output/AndroidManifest.xml:20:66-119
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:10.2.1] /Users/Matthaus/.android/build-cache/1ae010519457b543a8246c878fa693ebad0f30b5/output/AndroidManifest.xml:20:20-65
