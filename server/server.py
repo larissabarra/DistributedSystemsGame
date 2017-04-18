@@ -23,9 +23,11 @@ def on_subscribe(mosq, obj, mid, granted_qos):
     print("Subscribed: " + str(mid) + " " + str(granted_qos))
 
 def on_message(mosq, obj, msg):
-    print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
-    message = json.loads(msg.payload)
-    data.append({'sensor': message.sensor, 'location': message.location})
+    message = msg.payload.decode("utf-8")
+    print(msg.topic + " " + str(msg.qos) + " " + message)
+    message_json = json.loads(message)
+    print(message_json)
+    data.append({'sensor': message_json['sensor'], 'location': message_json['location']})
 
 if __name__=='__main__':
     client = mqtt.Client()
