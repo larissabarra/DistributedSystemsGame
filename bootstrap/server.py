@@ -13,13 +13,26 @@ nodes  = []
 
 def process_enternode(cliente_id, ip, con):
     try:
+        timestamp = int(time.time())
         response =  {'node_id':cliente_id, 'cluster': nodes}
         response = json.dumps(response)
-        nodes.append(tuple([cliente_id, ip]))
+        nodes.append([cliente_id, ip, 0, 'online', timestamp])
         con.send(response)
         print 'Novo node adicionado: ', response
     except:
         raise Exception('Falha ao processar entrada de novo node: ', sys.exc_info()[1])
+
+def process_heartbeatnode(client_id, heartbeat):
+    try:
+        timestamp = int(time.time())
+        find_node = [item for item in nodes if item[0] == cliente_id][0]
+        index_node = nodes.index(find_node)
+        nodes[index_node][2] = heartbeat;
+        nodes[index_node][3] = 'online';
+        nodes[index_node][4] = timestamp;
+        print 'Heartbeat recebido: ', cliente_id
+    except:
+        raise Exception('Falha ao processar heartbeat de node: ', sys.exc_info()[1])
 
 def process_exitnode(cliente_id):
     try:
@@ -48,6 +61,8 @@ def conectado(con, cliente):
 
           if (msg['type'] == 'enter'):
               process_enternode(cliente_id, ip, con)
+          elif (msg['type'] == 'heartbeat'):
+              process_heartbeatnode(cliente_id, msg['heartbeat'])
           elif(msg['type'] == 'exit'):
               process_exitnode(msg['id'])
 
