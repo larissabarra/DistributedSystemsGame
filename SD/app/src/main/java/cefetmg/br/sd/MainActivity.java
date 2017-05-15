@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     public static final int REQUEST_COARSE_PERMISSION = 1;
     public static final int REQUEST_FINE_PERMISSION = 2;
-    public static final String MQTT_BROKE_ADDRESS = "tcp://10.3.152.12:1883";
+    public static final String MQTT_BROKE_ADDRESS = "tcp://192.168.25.16:1883";
     public static final String MQTT_CLIENT_TOPIC = "coordenadas";
     public static final String MQTT_CLIENT_NAME = "AndroidClient";
     public static final int MQTT_CLIENT_QOS = 2;
@@ -72,7 +72,9 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
                 String currentPosition = String.valueOf(mLastLocation.getLatitude()) + ", " + String.valueOf(mLastLocation.getLongitude());
                 TextView coordinatesText = (TextView) findViewById(R.id.coordinatesText);
                 coordinatesText.setText(currentPosition);
-                sendMqttMessage(currentPosition);
+                String jsonMessage = "{ \"sensor\": \"%s\", \"location\": \"%s\" }";
+                jsonMessage = String.format(jsonMessage, MQTT_CLIENT_NAME, currentPosition);
+                sendMqttMessage(jsonMessage);
             }
         }
     }
