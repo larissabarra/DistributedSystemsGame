@@ -22,5 +22,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service
+            android:name=".services.FailureControllerService"
+            android:exported="false" />
     </application>
 </manifest>

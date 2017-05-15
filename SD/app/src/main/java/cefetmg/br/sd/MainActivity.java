@@ -1,6 +1,7 @@
 package cefetmg.br.sd;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
@@ -24,6 +25,8 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+import cefetmg.br.sd.services.FailureControllerService;
+
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     public static final int REQUEST_COARSE_PERMISSION = 1;
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     public static final int MQTT_CLIENT_QOS = 2;
 
     GoogleApiClient mGoogleApiClient = null;
+    Intent mIntentFailureService = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
         setContentView(R.layout.activity_main);
         checkPermissions();
+        initializeFailureController();
 
     }
 
@@ -141,6 +146,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             }
             mGoogleApiClient.connect();
         }
+    }
+
+    private void initializeFailureController() {
+        mIntentFailureService = new Intent(this, FailureControllerService.class);
+        startService(mIntentFailureService);
     }
 
 }
