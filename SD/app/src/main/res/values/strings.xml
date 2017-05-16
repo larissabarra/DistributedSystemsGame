@@ -2,4 +2,9 @@
     <string name="app_name">SD</string>
     <string name="denied_coarse_permission">O aplicativo foi marcado para não receber permissão de acesso a localização de baixa precisão. Para utilizar todos os recursos, acesse as configurações do Android e adicione a permissão.</string>
     <string name="denied_fine_permission">O aplicativo foi marcado para não receber permissão de acesso a localização de alta precisão. Para utilizar todos os recursos, acesse as configurações do Android e adicione a permissão.</string>
+    <string name="bootstrapIP">10.0.2.2</string>
+    <string name="bootstrapPort">8001</string>
+    <string name="defaultGossipPort">8002</string>
+    <string name="defaultGossipVerifications">1000</string>
+    <string name="defaultGossipFailWait">20000</string>
 </resources>
