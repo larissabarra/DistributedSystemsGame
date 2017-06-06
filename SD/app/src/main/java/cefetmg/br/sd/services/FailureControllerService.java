@@ -3,6 +3,7 @@ package cefetmg.br.sd.services;
 import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,12 +11,10 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.Socket;
-import java.security.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -24,6 +23,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 import cefetmg.br.sd.R;
+
+import static cefetmg.br.sd.MainActivity.SERVER_IP;
 
 public class FailureControllerService extends IntentService {
 
@@ -48,13 +49,15 @@ public class FailureControllerService extends IntentService {
     @Override
     protected void onHandleIntent(Intent intent) {
         Log.d("FailureController", "Executando");
+        mBootstrapIP = SERVER_IP;
+        Toast.makeText(this, "ip intent: " + intent.getStringExtra("SERVER_IP"), Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "ip servico: " + mBootstrapIP, Toast.LENGTH_SHORT).show();
         enterToCluster();
         setupTimerToGossip();
     }
 
     private boolean enterToCluster() {
         Log.d("FailureController", "Iniciando entrada no cluster");
-        mBootstrapIP = getResources().getString(R.string.bootstrapIP);
         mBootstrapPort = Integer.parseInt(getResources().getString(R.string.bootstrapPort));
         mDefaultGossipPort = Integer.parseInt(getResources().getString(R.string.defaultGossipPort));
         try {
@@ -92,15 +95,18 @@ public class FailureControllerService extends IntentService {
 
     private void gossipStatus() {
         mCurrentHeartBeat++;
-        //Envia para node aleatório
+        //Envia para 2 nodes aleatórios
         Random random = new Random();
         int clusterSize = mGossipRegisters.size();
-        int randomNodeIndex = random.nextInt(clusterSize);
-        GossipRegister randomNode = mGossipRegisters.get(randomNodeIndex);
-        gossipToNode(randomNode.cliente_ip, mDefaultGossipPort);
-
-        //Enviar para o bootstrap
-        gossipToNode(mBootstrapIP, mBootstrapPort);
+        int randomNodeIndex1 = random.nextInt(clusterSize);
+        int randomNodeIndex2 = random.nextInt(clusterSize);
+        while (randomNodeIndex2 == randomNodeIndex1) {
+            randomNodeIndex2 = random.nextInt(clusterSize);
+        }
+        GossipRegister randomNode1 = mGossipRegisters.get(randomNodeIndex1);
+        gossipToNode(randomNode1.cliente_ip, mDefaultGossipPort);
+        GossipRegister randomNode2 = mGossipRegisters.get(randomNodeIndex2);
+        gossipToNode(randomNode2.cliente_ip, mDefaultGossipPort);
     }
 
     private void checkFailures() {
@@ -113,7 +119,6 @@ public class FailureControllerService extends IntentService {
                 mGossipRegisters.remove(register);
             }
         }
-
     }
 
     private void gossipToNode(String nodeIp, int nodePort) {
@@ -150,7 +155,20 @@ public class FailureControllerService extends IntentService {
             gossipRegister.cliente_heartbeat = clusterRegister.getInt(2);
             gossipRegister.cliente_status = clusterRegister.getString(3);
             gossipRegister.cliente_timestamp = clusterRegister.getLong(4);
-            mGossipRegisters.add(gossipRegister);
+
+            boolean merge = false;
+            for (GossipRegister register : mGossipRegisters) {
+                if (register.cliente_id == gossipRegister.cliente_id) {
+                    register.cliente_heartbeat = gossipRegister.cliente_heartbeat;
+                    register.cliente_status = gossipRegister.cliente_status;
+                    register.cliente_timestamp = gossipRegister.cliente_timestamp;
+                    merge = true;
+                    break;
+                }
+            }
+            if (!merge) {
+                mGossipRegisters.add(gossipRegister);
+            }
         }
     }
 

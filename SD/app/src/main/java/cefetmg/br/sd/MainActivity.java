@@ -28,7 +28,8 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     public static final int REQUEST_COARSE_PERMISSION = 1;
     public static final int REQUEST_FINE_PERMISSION = 2;
-    public static final String MQTT_BROKE_ADDRESS = "tcp://192.168.25.16:1883";
+    public static String SERVER_IP = "";
+    public static String MQTT_BROKE_ADDRESS = "";
     public static final String MQTT_CLIENT_TOPIC = "coordenadas";
     public static final String MQTT_CLIENT_NAME = "AndroidClient";
     public static final int MQTT_CLIENT_QOS = 2;
@@ -39,9 +40,11 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        SERVER_IP = getIntent().getStringExtra("SERVER_IP");
+        MQTT_BROKE_ADDRESS = "tcp://" + SERVER_IP + ":1883";
+        //201.17.158.170
         setContentView(R.layout.activity_main);
         checkPermissions();
-
     }
 
     @Override
