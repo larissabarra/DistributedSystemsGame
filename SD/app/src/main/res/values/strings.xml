@@ -7,4 +7,10 @@
     <string name="defaultGossipPort">8002</string>
     <string name="defaultGossipVerifications">1000</string>
     <string name="defaultGossipFailWait">20000</string>
+    <string name="defaultP2PPort">3000</string>
+    <string-array name="P2PContingency">
+        <item>Desligada</item>
+        <item>Opcional</item>
+        <item>Mandatória</item>
+    </string-array>
 </resources>

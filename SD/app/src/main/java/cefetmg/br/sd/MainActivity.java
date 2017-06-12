@@ -4,6 +4,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
@@ -24,11 +25,20 @@ import org.eclipse.paho.client.mqttv3.MqttException;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 
+import cefetmg.br.sd.services.FailureControllerService;
+import cefetmg.br.sd.services.P2P.P2PStorageService;
+
+import static cefetmg.br.sd.services.P2P.P2PPeerNode.CONTINGENCY_OPTIONAL;
+
 public class MainActivity extends AppCompatActivity implements GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
 
     public static final int REQUEST_COARSE_PERMISSION = 1;
     public static final int REQUEST_FINE_PERMISSION = 2;
     public static String SERVER_IP = "";
+    public static String P2P_NODEID = "";
+    public static boolean P2P_FIRSTNODE = false;
+    public static int P2P_PEERCONTINGENCY;
+    public static String P2P_PEERNODE = "";
     public static String MQTT_BROKE_ADDRESS = "";
     public static final String MQTT_CLIENT_TOPIC = "coordenadas";
     public static final String MQTT_CLIENT_NAME = "AndroidClient";
@@ -36,15 +46,28 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
 
     GoogleApiClient mGoogleApiClient = null;
 
+    Intent mIntentFailureService = null;
+    Intent mIntentP2PStorageService = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         SERVER_IP = getIntent().getStringExtra("SERVER_IP");
+        P2P_NODEID = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
+        P2P_FIRSTNODE = getIntent().getExtras().getBoolean("P2P_FIRSTNODE", true);
+        P2P_PEERNODE = getIntent().getExtras().getString("P2P_PEERNODE", "");
+        P2P_PEERCONTINGENCY = getIntent().getExtras().getInt("P2P_PEERCONTINGENCY", CONTINGENCY_OPTIONAL);
         MQTT_BROKE_ADDRESS = "tcp://" + SERVER_IP + ":1883";
         //201.17.158.170
         setContentView(R.layout.activity_main);
         checkPermissions();
+    }
+
+    @Override
+    protected void onResume() {
+        initializeP2PStorageService();
+        super.onResume();
     }
 
     @Override
@@ -57,6 +80,7 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
         if (mGoogleApiClient != null) {
             mGoogleApiClient.disconnect();
         }
+        stopP2PStorageService();
         super.onStop();
     }
 
@@ -144,6 +168,24 @@ public class MainActivity extends AppCompatActivity implements GoogleApiClient.C
             }
             mGoogleApiClient.connect();
         }
+    }
+
+    private void initializeFailureController() {
+        mIntentFailureService = new Intent(this, FailureControllerService.class);
+        startService(mIntentFailureService);
+    }
+
+    private void initializeP2PStorageService() {
+        mIntentP2PStorageService = new Intent(this, P2PStorageService.class);
+        mIntentP2PStorageService.putExtra("P2P_NODEID", P2P_NODEID);
+        mIntentP2PStorageService.putExtra("P2P_FIRSTNODE", P2P_FIRSTNODE);
+        mIntentP2PStorageService.putExtra("P2P_PEERNODE", P2P_PEERNODE);
+        mIntentP2PStorageService.putExtra("P2P_PEERCONTINGENCY", P2P_PEERCONTINGENCY);
+        startService(mIntentP2PStorageService);
+    }
+
+    private void stopP2PStorageService() {
+        stopService(mIntentP2PStorageService);
     }
 
 }
